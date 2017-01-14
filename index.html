@@ -9,9 +9,26 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   </head>
   <body ng-controller="mainController">
-    <h1>{{ "Color name  " + " "  }} <p ng-hide="isColor"> : {{color}}</p></h1>
-    
- 
+     <header>
+      <h1 class="text-center">{{bookStoreName}} Store</h1>
+      <h2 class="text-center">Open Since {{10*200}}.</h2>
+     </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="list-group" >
+                    <div class="list-group-item" ng-repeat="book in books">
+                        <h1>{{book.name}}   {{book.price}} Bath</h1>
+                        <p>{{book.description}}</p>
+                        <div class="text-right"> 
+                           <button ng-show="book.canPurchase">Purchase</button>
+                           <h3 ng-hide="book.canPurchase">Sold out</h3>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>    
     <script src="js/lib/jquery/jquery.min.js"></script>
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="js/lib/angular/angular.min.js"></script>
