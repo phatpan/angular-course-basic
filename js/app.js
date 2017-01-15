@@ -2,6 +2,7 @@
 var app = angular.module("myApp", []);
 app.controller("mainController", function($scope){
     $scope.bookStoreName = "KaeBook";
+    $scope.dateNow = new Date();
     $scope.books = [
     {
         name: 'AngularJs',

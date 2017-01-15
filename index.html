@@ -13,14 +13,19 @@
       <h1 class="text-center">{{bookStoreName}} Store</h1>
       <h2 class="text-center">Open Since {{10*200}}.</h2>
      </header>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <p>วันที่ {{dateNow | date:'MM/dd/yyyy'}}</p>
+                <p id="list-order-book-title"><b>Book lists</b></p>
                 <div class="list-group" >
                     <div class="list-group-item" ng-repeat="book in books">
-                        <h1>{{book.name}}   {{book.price}} Bath</h1>
-                        <p>{{book.description}}</p>
+                        <h1>ชื่อหนังสือ : {{book.name}} </br>  ราคา : {{book.price}} บาท</h1>
+                        <p>รายละเอียด : {{book.description}}</p>
+                        <p ng-if="numPurchase" id="section-number-purchase">จำนวนที่สั่งซื้อ : {{numPurchase}} เล่ม</p>
                         <div class="text-right"> 
+                           <input type="text" name="num-purchase" id="num-purchase"" ng-model="numPurchase">
                            <button ng-show="book.canPurchase">Purchase</button>
                            <h3 ng-hide="book.canPurchase">Sold out</h3>
                         </div>
@@ -28,7 +33,8 @@
                 </div>  
             </div>
         </div>
-    </div>    
+    </div>   
+     
     <script src="js/lib/jquery/jquery.min.js"></script>
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="js/lib/angular/angular.min.js"></script>
