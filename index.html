@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+s<!DOCTYPE html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +8,36 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   </head>
-  <body>
-    <h1>Hello</h1>
+  <body ng-controller="mainController">
+     <header>
+      <h1 class="text-center">{{bookStoreName}} Store</h1>
+      <h2 class="text-center">Open Since {{10*200}}.</h2>
+     </header>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>วันที่ {{dateNow | date:'MM/dd/yyyy'}}</p>
+                <p id="list-order-book-title"><b>Book lists</b></p>
+                <div class="list-group" >
+                    <div class="list-group-item" ng-repeat="book in books">
+                        <h1>ชื่อหนังสือ : {{book.name}} </br>  ราคา : {{book.price}} บาท</h1>
+                        <p>รายละเอียด : {{book.description}}</p>
+                        <p ng-if="numPurchase" id="section-number-purchase">จำนวนที่สั่งซื้อ : {{numPurchase}} เล่ม</p>
+                        <div class="text-right"> 
+                           <input type="text" name="num-purchase" id="num-purchase"" ng-model="numPurchase">
+                           <button ng-show="book.canPurchase">Purchase</button>
+                           <h3 ng-hide="book.canPurchase">Sold out</h3>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>   
+     
     <script src="js/lib/jquery/jquery.min.js"></script>
     <script src="js/lib/bootstrap/bootstrap.min.js"></script>
-
+    <script src="js/lib/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
