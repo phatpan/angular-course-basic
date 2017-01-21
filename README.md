@@ -1,1 +1,2 @@
-# angular-course-basic
+Start server
+    python -m SimpleHTTPServer
